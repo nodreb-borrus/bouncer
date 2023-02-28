@@ -1,0 +1,23 @@
+env:
+  desk: 'lands'
+  urbit_path: '~/code/urbit'
+  landscape_path: '~/code/landscape'
+  landscape_apps_path: '~/code/landscape-apps'
+  repo_path: '~/code/lands'
+  ship_path: '~/Urbits'
+script:
+  - merge:
+    - cmd: 'new-desk %lands'
+      type: 'urbit:app'
+  - mount:
+    - cmd: 'mount %lands'
+      type: 'urbit:app'
+  - sync:
+    - cmd: './apps/lands/sync.sh'
+      type: 'system'
+  - commit:
+    - cmd: 'commit %lands'
+      type: 'urbit:app'
+  - install:
+    - cmd: 'install our %lands'
+      type: 'urbit:app'
