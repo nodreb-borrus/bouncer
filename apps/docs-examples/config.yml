@@ -1,0 +1,23 @@
+env:
+  desk: 'squad'
+  urbit_path: '~/code/urbit'
+  repo_path: '~/code/docs-examples'
+  landscape_path: '~/code/landscape'
+  ship_path: '~/Urbits'
+script:
+  - merge:
+    - cmd: 'merge %squad our %base'
+      type: 'urbit:app'
+  - mount:
+    - cmd: 'mount %squad'
+      type: 'urbit:app'
+  - sync:
+    - cmd: './apps/docs-examples/sync.sh'
+      type: 'system'
+  - commit:
+    - cmd: 'commit %squad'
+      type: 'urbit:app'
+  - install:
+    - cmd: 'install our %squad'
+      type: 'urbit:app'
+
